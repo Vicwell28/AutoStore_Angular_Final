@@ -1,0 +1,20 @@
+<div class="container mt-4">
+    <h1 class="text-center">Actulaizar Tipo</h1>
+    <form [formGroup]="FormTipo" (submit)="Enviar(FormTipo.value)"> 
+        <div class="form-floating mb-3">
+        <input formControlName="Nombre" type="text" class="form-control" id="TipoNuevo" value="{{ datosTipo }}" placeholder="TipoNuevo">
+        <label for="TipoNuevo">Nuevo Tipo</label>
+        </div>
+        <div *ngIf="FormTipo.value.Nombre == ''">
+            <p class="text-center alert alert-danger">El Campo No Puede Estar Vacio</p>
+        </div>
+        <div class="d-grid gap-2" *ngIf="FormTipo.value.Nombre == ''; else Escribio">
+            <button class="btn btn-primary text-dark" disabled id="Tipo" type="submit">Enviar</button>        
+        </div>
+        <ng-template #Escribio>
+            <div class="d-grid gap-2">
+                <button class="btn btn-primary text-dark" id="Tipo" type="submit">Enviar</button>
+            </div>
+        </ng-template>
+    </form>
+</div>

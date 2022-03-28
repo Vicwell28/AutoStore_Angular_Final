@@ -1,0 +1,24 @@
+<div class="container mt-5">
+  <h1 class="text-center">Todos Los Citaes               
+  </h1>
+  <button type="button" class="btn btn-success m-2" routerLink="../FormCita">Agregar Nuevo Cita</button>
+  <table class="table table-hover table-bordered text-center">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nombre Cita</th>
+        <th scope="col">Opciones</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="DatosCita">
+        <tr *ngFor="let Cita of DatosCita; let i = index;">
+        <th scope="row">{{i}}</th>
+          <td>{{ Cita.nombre_Cita }}</td>
+          <td>
+              <button type="button" class="btn btn-success me-1" [routerLink]="['../Editar/Cita/', Cita.id]">Editar</button>
+              <button type="button" class="btn btn-danger ms-1" (click)="Eliminar(Cita.id)">Eliminar</button>
+          </td>
+        </tr>
+    </tbody>
+</table>
+</div>

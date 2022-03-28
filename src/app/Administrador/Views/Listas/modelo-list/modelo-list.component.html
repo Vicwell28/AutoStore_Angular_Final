@@ -1,0 +1,26 @@
+<div class="container mt-5">
+  <h1 class="text-center">Todos Los Modeloes               
+  </h1>
+  <button type="button" class="btn btn-success m-2" routerLink="../FormModelo">Agregar Nuevo Modelo</button>
+  <table class="table table-hover table-bordered text-center">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nombre Marca</th>
+        <th scope="col">Nombre Modelo</th>
+        <th scope="col">Opciones</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="DatosModelo">
+        <tr *ngFor="let Modelo of DatosModelo; let i = index;">
+        <th scope="row">{{i}}</th>
+        <td>{{ Modelo.Marca.nombre_marca }}</td>
+          <td>{{ Modelo.nombre_modelo }}</td>
+          <td>
+              <button type="button" class="btn btn-success me-1" [routerLink]="['../Editar/Modelo/', Modelo.id]">Editar</button>
+              <button type="button" class="btn btn-danger ms-1" (click)="Eliminar(Modelo.id)">Eliminar</button>
+          </td>
+        </tr>
+    </tbody>
+</table>
+</div>

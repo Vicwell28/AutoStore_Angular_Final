@@ -1,0 +1,75 @@
+<div class="container mt-4">
+    <h1 class="text-center">Agregar Nuevo Vehiculo</h1>
+    <form [formGroup]="FormVehiculo" (submit)="Enviar(FormVehiculo.value)"> 
+        <div class="form-floating mb-2">
+            <select formControlName="Modelo" *ngIf="datosModelo" class="form-select" id="Modelo" aria-label="Modelo">
+              <option *ngFor="let modelo of datosModelo" [value]="modelo.id">{{modelo.nombre_modelo}}</option>
+            </select>
+            <label for="Modelo">Seleccion El Modelo Del Vehiculo</label>
+        </div>
+
+        <div class="form-floating mb-2">
+            <select formControlName="Tipo" *ngIf="datosTipo" class="form-select" id="Tipo" aria-label="Tipo">
+              <option *ngFor="let tipo of datosTipo" [value]="tipo.id">{{tipo.nombre_tipo}}</option>
+            </select>
+            <label for="Modelo">Seleccion El Tipo Del Vehiculo</label>
+        </div>
+        <div class="form-floating mb-2">    
+            <select formControlName="Color" *ngIf="datosColor"class="form-select" id="Color" aria-label="Color">
+              <option *ngFor="let color of datosColor" [value]="color.id">{{color.nombre_color}}</option>
+            </select>
+            <label for="Color">Seleccion El Color Del Vehiculo</label>
+        </div>
+        <div class="form-floating mb-2">
+            <select formControlName="Transmicion" *ngIf="datosTrans" class="form-select" id="Transmicion" aria-label="Transmicion">
+              <option *ngFor="let trans of datosTrans" [value]="trans.id">{{trans.nombre_trans}}</option>
+            </select>
+            <label for="Transmicion">Seleccion El Transmicion Del Vehiculo</label>
+        </div>
+        <div class="form-floating mb-2">
+            <select formControlName="Combustible" *ngIf="datosCombustible" class="form-select" id="Combustible" aria-label="Combustible">
+              <option *ngFor="let com of datosCombustible" [value]="com.id">{{com.nombre_combustible}}</option>
+            </select>
+            <label for="Combustible">Seleccion El Combustible Del Vehiculo</label>
+        </div>
+        <div class="form-floating mb-2">
+            <select formControlName="Puertas" class="form-select" id="Puertas" aria-label="Puertas">
+              <option value=1>1</option>
+              <option value=2>2</option>
+              <option value=3>3</option>
+              <option value=4>4</option>
+              <option value=5>5</option>
+              <option value=6>6</option>
+            </select>
+            <label for="Puertas">Seleccion El Puertas Del Vehiculo</label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input formControlName="Precio" type="number" class="form-control" id="Precio" placeholder="name@example.com">
+            <label for="Precio">Precio</label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input formControlName="Kilometraje" type="text" class="form-control" id="Kilometraje" placeholder="name@example.com">
+            <label for="Kilometraje">Kilometraje</label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <textarea formControlName="Descripcion" class="form-control" placeholder="Leave a comment here" id="comentario" style="height: 100px"></textarea>
+            <label for="comentario">Descripcion</label>
+          </div>
+
+        <div *ngIf="FormVehiculo.value.Kilometraje == ''">
+            <p class="text-center alert alert-danger">Los Campo No Pueden Estar Vacios</p>
+        </div>
+
+        <div class="d-grid gap-2" *ngIf="FormVehiculo.value.Kilometraje == ''; else Escribio">
+            <button class="btn btn-primary text-dark" disabled id="Vehiculo" type="submit">Enviar</button>        
+        </div>
+        <ng-template #Escribio>
+            <div class="d-grid gap-2">
+                <button class="btn btn-primary text-dark" id="Vehiculo" type="submit">Enviar</button>
+            </div>
+        </ng-template>
+    </form>
+</div>

@@ -1,0 +1,13 @@
+<div class="container mt-5">
+    <h1 class="text-center">Elige La Fecha Para Venir A Ver El Vehiculo</h1>
+    <form [formGroup]="CitaForm" (submit)="agendarCita(CitaForm.value)">
+        <div class="text-center m-3">
+            <input formControlName="fecha" type="date" >
+        </div>
+
+        <div class="d-grid gap-2">
+            <button id="color" class="btn btn-primary" type="submit">Agendar Cita</button>
+        </div>
+    </form>
+   
+</div>

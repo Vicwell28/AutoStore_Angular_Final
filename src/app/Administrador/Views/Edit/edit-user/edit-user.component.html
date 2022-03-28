@@ -1,0 +1,28 @@
+<div class="container mt-4" *ngIf="datosUser">
+    <h1 class="text-center">Actulaizar Usuario</h1>
+    <form [formGroup]="FormColor" (submit)="Enviar(FormColor.value)"> 
+        <div class="form-floating mb-3">
+        <input formControlName="username" type="text" class="form-control" id="ColorNuevo" value="{{ datosUser.username }}" placeholder="ColorNuevo">
+        <label for="ColorNuevo">Nuevo UserName</label>
+        </div>
+        <div class="form-floating mb-3">
+        <input formControlName="email" type="text" class="form-control" id="ColorNuevo" value="{{ datosUser.email }}" placeholder="ColorNuevo">
+        <label for="ColorNuevo">Nuevo email</label>
+        </div>
+        <div class="form-floating mb-3">
+        <input formControlName="rol" type="text" class="form-control" id="ColorNuevo" [value]="datosUser.rol" placeholder="ColorNuevo">
+        <label for="ColorNuevo">Nuevo Rol</label>
+        </div>
+        <div *ngIf="FormColor.value.rol == ''">
+            <p class="text-center alert alert-danger">Los Campos No Puede Estar Vacio</p>
+        </div>
+        <div class="d-grid gap-2" *ngIf="FormColor.value.rol == ''; else Escribio">
+            <button class="btn btn-primary text-dark" disabled id="color" type="submit">Enviar</button>        
+        </div>
+        <ng-template #Escribio>
+            <div class="d-grid gap-2">
+                <button class="btn btn-primary text-dark" id="color" type="submit">Enviar</button>
+            </div>
+        </ng-template>
+    </form>
+</div>

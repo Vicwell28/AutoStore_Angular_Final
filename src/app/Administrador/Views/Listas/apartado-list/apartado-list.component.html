@@ -1,0 +1,24 @@
+<div class="container mt-5">
+  <h1 class="text-center">Todos Los Apartadoes               
+  </h1>
+  <button type="button" class="btn btn-success m-2" routerLink="../FormApartado">Agregar Nuevo Apartado</button>
+  <table class="table table-hover table-bordered text-center">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nombre Apartado</th>
+        <th scope="col">Opciones</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="DatosApartado">
+        <tr *ngFor="let Apartado of DatosApartado; let i = index;">
+        <th scope="row">{{i}}</th>
+          <td>{{ Apartado.nombre_Apartado }}</td>
+          <td>
+              <button type="button" class="btn btn-success me-1" [routerLink]="['../Editar/Apartado/', Apartado.id]">Editar</button>
+              <button type="button" class="btn btn-danger ms-1" (click)="Eliminar(Apartado.id)">Eliminar</button>
+          </td>
+        </tr>
+    </tbody>
+</table>
+</div>

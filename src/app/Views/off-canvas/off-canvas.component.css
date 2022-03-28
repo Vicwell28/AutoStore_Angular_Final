@@ -1,0 +1,6 @@
+#canvasOff1{
+    background-image: linear-gradient(to top, #84fab0 0%, #8fd3f4 100%);
+}
+#canvasOff2{
+    background-image: linear-gradient(to bottom, #84fab0 0%, #8fd3f4 100%);
+}

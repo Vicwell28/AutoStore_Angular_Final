@@ -1,0 +1,24 @@
+<div class="container mt-5">
+  <h1 class="text-center">Todos Los Transmiciones               
+  </h1>
+  <button type="button" class="btn btn-success m-2" routerLink="../FormTransmicion">Agregar Nuevo Transmicion</button>
+  <table class="table table-hover table-bordered text-center">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nombre Transmicion</th>
+        <th scope="col">Opciones</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="DatosTransmicion">
+        <tr *ngFor="let Transmicion of DatosTransmicion; let i = index;">
+        <th scope="row">{{i}}</th>
+          <td>{{ Transmicion.nombre_trans }}</td>
+          <td>
+              <button type="button" class="btn btn-success me-1" [routerLink]="['../Editar/Transmicion/', Transmicion.id]">Editar</button>
+              <button type="button" class="btn btn-danger ms-1" (click)="Eliminar(Transmicion.id)">Eliminar</button>
+          </td>
+        </tr>
+    </tbody>
+</table>
+</div>

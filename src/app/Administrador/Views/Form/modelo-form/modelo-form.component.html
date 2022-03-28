@@ -1,0 +1,32 @@
+<div class="container mt-4">
+    <h1 class="text-center">Agregar Nuevo Modelo</h1>
+    <form [formGroup]="FormModelo" (submit)="Enviar(FormModelo.value)"> 
+        <div class="row g-2">
+            <div class="col-md">
+                <div class="form-floating">
+                  <select *ngIf="datosMarcas" formControlName="Marca" class="form-select" id="floatingSelectGrid" aria-label="Floating label select example">
+                    <option *ngFor="let Marca of datosMarcas" [value]="Marca.id">{{Marca.nombre_marca}} </option>
+                  </select>
+                  <label for="floatingSelectGrid">Marcas Auto</label>
+                </div>
+              </div>
+            <div class="col-md mb-3">
+              <div class="form-floating">
+                <input formControlName="Nombre" type="text" class="form-control" id="modelo" placeholder="name@example.com">
+                <label for="modelo">Nuevo Modelo</label>
+              </div>
+            </div>
+          </div>
+        <div *ngIf="FormModelo.value.Nombre == ''">
+            <p class="text-center alert alert-danger">El Campo No Puede Estar Vacio</p>
+        </div>
+        <div class="d-grid gap-2" *ngIf="FormModelo.value.Nombre == ''; else Escribio">
+            <button class="btn btn-primary text-dark" disabled id="Modelo" type="submit">Enviar</button>        
+        </div>
+        <ng-template #Escribio>
+            <div class="d-grid gap-2">
+                <button class="btn btn-primary text-dark" id="Modelo" type="submit">Enviar</button>
+            </div>
+        </ng-template>
+    </form>
+</div>

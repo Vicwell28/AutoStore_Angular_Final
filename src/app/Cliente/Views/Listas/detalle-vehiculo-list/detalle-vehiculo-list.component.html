@@ -1,0 +1,145 @@
+<div class="container mt-5">
+
+
+   <div class="row" *ngIf="datosVehiculos">
+       <div class="col-5">
+        
+        <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="../../../../../assets/img/auto.png" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="../../../../../assets/img/auto.png" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="../../../../../assets/img/auto.png" class="d-block w-100" alt="...">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+
+
+
+
+       </div>
+       <div class="col bg-light border">
+        <h2 class="text-center">Especificaciones</h2>
+        
+        <div>
+            <div class="row">
+                <h4 class="text-center d-block">Precio: ${{datosVehiculos.precio}} .00 mx</h4>
+                <div class="col">
+                    <p class="text-center"><strong>Marca:</strong> {{datosVehiculos.Modelo.Marca.nombre_marca}}</p>
+                    <p class="text-center"><strong>Transmicion:</strong> {{datosVehiculos.Transmicion.nombre_trans}}</p>
+                    <p class="text-center"><strong>Kilometros:</strong> {{datosVehiculos.kilometraje}} Kms</p>
+                    <p class="text-center"><strong>Combustible:</strong> {{datosVehiculos.Combustible.nombre_combustible}}</p>
+                </div>
+                <div class="col">
+                    <p class="text-center"><strong>Modelo:</strong> {{datosVehiculos.Modelo.nombre_modelo}}</p>
+                    <p class="text-center"><strong>Tipo:</strong> {{datosVehiculos.Tipo.nombre_tipo}}</p>
+                    <p class="text-center"><strong>Puertas:</strong> {{datosVehiculos.puertas}}</p>
+                    <p class="text-center"><strong>Año:</strong> 2015</p>
+
+                </div>
+            </div>
+
+        </div>
+        
+        <div *ngIf="estrellas != null" class="text-center">
+          <div *ngIf="estrellas >= 0 && estrellas <= 0.9">
+            <img style="width: 25%;" src="../../../../../assets/img/0Estrellas.png"><p class=" ms-2 " style="display: inline-block;"><strong>0</strong></p>
+          </div>
+          <div *ngIf="estrellas >= 1 && estrellas <= 1.9">
+            <img style="width: 25%;" src="../../../../../assets/img/1Estrella.png"><p class=" ms-2 " style="display: inline-block;"><strong>1</strong></p>
+          </div>
+          <div *ngIf="estrellas >= 2 && estrellas <= 2.9">
+            <img style="width: 25%;" src="../../../../../assets/img/2Estrella.png"><p class="ms-2" style="display: inline-block;"><strong>2</strong></p>
+          </div>
+          <div *ngIf="estrellas >= 3 && estrellas <= 3.9">
+            <img style="width: 25%;" src="../../../../../assets/img/3Estrella.png"><p class="ms-2" style="display: inline-block;"><strong>3</strong></p>
+          </div>
+          <div *ngIf="estrellas >= 4 && estrellas <= 4.9">
+            <img style="width: 25%;" src="../../../../../assets/img/4Estrella.png"><p class="ms-2" style="display: inline-block;"><strong>4</strong></p>
+          </div>
+          <div *ngIf="estrellas >= 5 && estrellas <= 5.9">
+            <img style="width: 25%;" src="../../../../../assets/img/5Estrella.png"><p class="ms-2" style="display: inline-block;"><strong>5</strong></p>
+          </div>
+          <button class="m-3" [routerLink]="['../../../Calificar/Vehiculo/', idVehiculo.id]">Calificar</button>
+      </div>
+
+
+
+        <div class="d-grid gap-2">
+            <button class="btn btn-primary text-dark mt-2" type="button" id="color" (click)="AgregarCarrito()">Agregar Al Carrito</button>
+        </div>
+        <div class="d-grid gap-2">
+            <button class="btn btn-primary text-dark mt-2" type="button" id="color" (click)="AgendarCita()">Agendar Cita </button>
+        </div>
+        <!-- <div class="d-grid gap-2 mb-3">
+            <button class="btn btn-primary text-dark mt-2" type="button" id="color" (click)="Apartar()">Apartar</button>
+        </div> -->
+
+
+
+       </div>
+   </div>
+
+
+
+
+
+   <div class="row mt-4 bg-light">
+       <div class="col">
+           <h4>Descripcion</h4>
+           <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas nostrum et voluptatum doloribus cupiditate tempore! Obcaecati, modi pariatur tempora corporis sequi voluptatibus excepturi dolores dolor magni molestiae minus voluptas perspiciatis!
+               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Possimus perspiciatis incidunt doloremque, ratione suscipit quaerat ipsam. Voluptates quidem minima perspiciatis, quia dicta autem possimus minus est ex nesciunt dolore repellat.
+               Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda, rem sit neque corrupti error nostrum amet sed, doloremque ex iusto ipsum ratione quis repellendus fugiat officia aliquid dolor eum ut?
+           </p>
+       </div>
+   </div>
+
+
+
+
+
+   <div class="row mt-4">
+       <div class="col">
+           <h4>Comentarios</h4>
+
+           <form [formGroup]="formCometario"(submit)="Agregar()" action="">
+            <div class="form-floating">
+                <textarea formControlName="Comentario" class="form-control" placeholder="comentario" id="comentario" style="height: 100px"></textarea>
+                <label for="comentario">Comments</label>
+              </div>
+              <div class="d-grid gap-2 mt-2" *ngIf="formCometario.value.Comentario == ''; else Escribio">
+                <button class="btn btn-primary text-dark" disabled id="color" type="submit">Agreagar Comentario</button>        
+            </div>
+            <ng-template #Escribio>
+                <div class="d-grid gap-2 mt-2">
+                    <button class="btn btn-primary text-dark" id="color" type="submit">Agreagar Comentario</button>
+                </div>
+            </ng-template>
+           </form>
+
+           <div *ngIf="comentariosVehiculo" class="mt-5">
+            
+               <h6><strong>Ultimos Cometarios</strong></h6>
+               <div *ngFor="let com of comentariosVehiculo" class="mt-4 border p-3">
+                <h6>{{com.idUser}}</h6>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-- {{com.Comentario}}</p> 
+               </div>
+              
+            </div>
+
+       </div>
+   </div>
+
+

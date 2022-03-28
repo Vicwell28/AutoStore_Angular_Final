@@ -1,0 +1,33 @@
+<div class="container mt-5">
+    <h1 class="text-center">Estos Son Los Vehiuclos Que Tienes Apartados</h1>
+    <table class="table table-striped table-hover mt-5">
+        <thead id="color">
+            <tr class="text-center">
+              <th scope="col">Marca</th>
+              <th scope="col">Modelo</th>
+              <th scope="col">Tipo</th>
+              <th scope="col">Transmicion</th>
+              <th scope="col">Precio</th>
+              <th scope="col">Puertas</th>
+              <th scope="col">Opciones</th>
+            </tr>
+          </thead>
+          <tbody class="text-center">
+            
+                <tr *ngFor="let vehiculo of VehiculosQueTiene">
+                    <td>{{vehiculo.Vehiculo.Modelo.Marca.nombre_marca}}</td>
+                    <td>{{vehiculo.Vehiculo.Modelo.nombre_modelo}}</td>
+                    <td>{{vehiculo.Vehiculo.Tipo.nombre_tipo}}</td>
+                    <td>{{vehiculo.Vehiculo.Transmicion.nombre_trans}}</td>
+                    <td>${{vehiculo.Vehiculo.precio}}.00</td>
+                    <td>{{vehiculo.Vehiculo.puertas}}</td>
+                    <td>
+                      <button type="button" class="btn btn-danger" (click)="eliminarDelCarrito(vehiculo.id)">Eliminar</button>
+                    </td>
+                  </tr>
+            
+          </tbody>
+    </table>
+</div>
+
+<br><br><br><br><br><br><br><br><br><br><br>

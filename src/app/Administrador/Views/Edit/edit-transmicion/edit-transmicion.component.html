@@ -1,0 +1,20 @@
+<div class="container mt-4">
+    <h1 class="text-center">Actulaizar Transmicion</h1>
+    <form [formGroup]="FormTransmicion" (submit)="Enviar(FormTransmicion.value)"> 
+        <div class="form-floating mb-3">
+        <input formControlName="Nombre" type="text" class="form-control" id="TransmicionNuevo" value="{{ datosTransmicion }}" placeholder="TransmicionNuevo">
+        <label for="TransmicionNuevo">Nuevo Transmicion</label>
+        </div>
+        <div *ngIf="FormTransmicion.value.Nombre == ''">
+            <p class="text-center alert alert-danger">El Campo No Puede Estar Vacio</p>
+        </div>
+        <div class="d-grid gap-2" *ngIf="FormTransmicion.value.Nombre == ''; else Escribio">
+            <button class="btn btn-primary text-dark" disabled id="Transmicion" type="submit">Enviar</button>        
+        </div>
+        <ng-template #Escribio>
+            <div class="d-grid gap-2">
+                <button class="btn btn-primary text-dark" id="Transmicion" type="submit">Enviar</button>
+            </div>
+        </ng-template>
+    </form>
+</div>
